@@ -3,21 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Patient;
 
-class HomeController extends Controller
+class PatientController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -25,13 +14,16 @@ class HomeController extends Controller
     public function index()
     {
         $patients = Patient::latest()->paginate(5);
-        return view('home', compact('patients'))
+        return view('patient.index', compact('patients'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
-
-    public function report()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        return view('report');
+        return view('patient.create');
     }
-
 }

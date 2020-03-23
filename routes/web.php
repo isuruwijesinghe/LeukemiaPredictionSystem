@@ -24,4 +24,6 @@ Route::post('/report', 'ReportController@store');
 
 Route::get('/report', 'HomeController@report');
 
+Route::resource('patient', 'PatientController');
+
 

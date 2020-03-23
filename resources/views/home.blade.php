@@ -23,7 +23,8 @@
     <div class="container-fluid">
     <div class="row pull-right">
 
-      <a class="btn btn-sm btn-success" href="/report">Create New Patient</a>
+      <!-- <a class="btn btn-sm btn-success" href="/report">Create New Patient</a> -->
+      <a class="btn btn-sm btn-success" href="{{ route('patient.create') }}">Create New Patient</a>
 
     </div>
     </div><br>
@@ -32,21 +33,20 @@
       <table class="table table-hover text-nowrap">
         <thead>
           <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>ID</th>
-            <th>Age</th>
-            <th>Date</th>
+            <th width="75px">No</th>
+            <th width="400px">Name</th>
+            <th width="200px">ID</th>
+            <th width="180px">Age</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
+        @foreach ($patients as $patient)
           <tr>
-            <td>183</td>
-            <td>John Doe</td>
-            <td>11-7-2014</td>
-            <td><span class="tag tag-success">Approved</span></td>
-            <td>Bacon ipsum dolor </td>
+            <td>{{++$i}}.</td>
+            <td>{{$patient->name}}</td>
+            <td>{{$patient->national_id}}</td>
+            <td>{{$patient->age}}</td>
             <td>
             <a class="btn btn-sm btn-success" href="">Show</a>
             <a class="btn btn-sm btn-warning" href="">Edit</a>
@@ -54,30 +54,7 @@
             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
             </td>
           </tr>
-          <tr>
-            <td>219</td>
-            <td>Alexander Pierce</td>
-            <td>11-7-2014</td>
-            <td><span class="tag tag-warning">Pending</span></td>
-            <td>Bacon ipsum dolor </td>
-            <td>adskadsda</td>
-          </tr>
-          <tr>
-            <td>657</td>
-            <td>Bob Doe</td>
-            <td>11-7-2014</td>
-            <td><span class="tag tag-primary">Approved</span></td>
-            <td>Bacon ipsum dolor </td>
-            <td>adskadsda</td>
-          </tr>
-          <tr>
-            <td>175</td>
-            <td>Mike Doe</td>
-            <td>11-7-2014</td>
-            <td><span class="tag tag-danger">Denied</span></td>
-            <td>Bacon ipsum dolor </td>
-            <td>adskadsda</td>
-          </tr>
+          @endforeach
         </tbody>
       </table>
     </div>
