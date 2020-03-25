@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Patient;
 use Illuminate\Http\Request;
+use App\Reports;
 
 class PatientController extends Controller
 {
@@ -43,7 +44,21 @@ class PatientController extends Controller
         Patient::create($request->all());
         return redirect('home')->with('success', 'New patient created successfully');
     }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $patient = Patient::find($id);
 
+        //user reports
+        $reportsData = Reports::where('patient_id', '=', $id)->orderBy('created_at', 'DESC')->get();
+
+        return view('patient.details', compact('patient', 'reportsData'));
+    }
      /**
      * Remove the specified resource from storage.
      *

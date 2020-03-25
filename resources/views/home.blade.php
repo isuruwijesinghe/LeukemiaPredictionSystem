@@ -23,7 +23,6 @@
     <div class="container-fluid">
     <div class="row pull-right">
 
-      <!-- <a class="btn btn-sm btn-success" href="/report">Create New Patient</a> -->
       <a class="btn btn-sm btn-success" href="{{ route('patient.create') }}">Create New Patient</a>
 
     </div>
@@ -54,7 +53,7 @@
             <td>
             <form action="{{ route('patient.destroy', $patient->id) }}" method="post">
             {{ csrf_field() }}
-            <a class="btn btn-sm btn-success" href="">Show</a>
+            <a class="btn btn-sm btn-success" href="{{route('patient.show',$patient->id)}}">Show</a>
             <a class="btn btn-sm btn-warning" href="">Edit</a>
             {{ method_field('DELETE') }}                        
             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
