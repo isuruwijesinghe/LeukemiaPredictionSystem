@@ -11,19 +11,21 @@
 |
 */
 
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth'])->group(function(){
+    Route::resource('patient', 'PatientController');
+    Route::get('/home', 'HomeController@index')->name('home');
+});
 
 Route::post('/report', 'ReportController@store');
 
 Route::get('/report', 'HomeController@report');
 
-Route::resource('patient', 'PatientController');
+
 
 

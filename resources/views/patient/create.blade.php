@@ -34,6 +34,7 @@
                 <!-- /.card-body -->
                 @csrf
                 <div class="card-footer">
+                    <a href="{{route('patient.index')}}" class="btn btn-danger">Back</a>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>

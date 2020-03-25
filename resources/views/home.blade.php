@@ -29,7 +29,11 @@
     </div>
     </div><br>
 
-
+    @if ($message = Session::get('success'))
+    <div style="margin-top: 20px;" class="alert alert-success">
+      <p>{{$message}}</p>
+    </div>
+    @endif
       <table class="table table-hover text-nowrap">
         <thead>
           <tr>
@@ -48,9 +52,11 @@
             <td>{{$patient->national_id}}</td>
             <td>{{$patient->age}}</td>
             <td>
+            <form action="{{ route('patient.destroy', $patient->id) }}" method="post">
+            {{ csrf_field() }}
             <a class="btn btn-sm btn-success" href="">Show</a>
             <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                    
+            {{ method_field('DELETE') }}                        
             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
             </td>
           </tr>
