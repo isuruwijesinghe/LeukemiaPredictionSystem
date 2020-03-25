@@ -54,7 +54,7 @@
             <form action="{{ route('patient.destroy', $patient->id) }}" method="post">
             {{ csrf_field() }}
             <a class="btn btn-sm btn-success" href="{{route('patient.show',$patient->id)}}">Show</a>
-            <a class="btn btn-sm btn-warning" href="">Edit</a>
+            <a class="btn btn-sm btn-warning" href="{{route('patient.edit',$patient->id)}}">Edit</a>
             {{ method_field('DELETE') }}                        
             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
             </td>

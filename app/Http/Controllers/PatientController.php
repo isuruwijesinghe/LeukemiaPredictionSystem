@@ -15,8 +15,7 @@ class PatientController extends Controller
     public function index()
     {
         $patients = Patient::latest()->paginate(5);
-        return view('patient.index', compact('patients'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return redirect('home');
     }
     /**
      * Show the form for creating a new resource.
@@ -58,6 +57,40 @@ class PatientController extends Controller
         $reportsData = Reports::where('patient_id', '=', $id)->orderBy('created_at', 'DESC')->get();
 
         return view('patient.details', compact('patient', 'reportsData'));
+    }
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $patient = Patient::find($id);
+        return view('patient.edit', compact('patient'));
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'national_id' => 'required',
+            'name' => 'required',
+            'age' => 'required',
+            'mobile_number' => 'required'
+        ]);
+        $patient = Patient::find($id);
+        $patient->national_id = $request->get('national_id');
+        $patient->name = $request->get('name');
+        $patient->age = $request->get('age');
+        $patient->mobile_number = $request->get('mobile_number');
+        $patient->save();
+        return redirect('home')->with('success', 'Patient details updated successfully');
     }
      /**
      * Remove the specified resource from storage.
