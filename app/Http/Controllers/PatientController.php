@@ -104,4 +104,9 @@ class PatientController extends Controller
         $patient->delete();
         return redirect('home')->with('success', 'Patient details deleted successfully');
     }
+
+    public function report()
+    {
+        return view('report');
+    }
 }
