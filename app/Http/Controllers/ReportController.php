@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Reports;
 
 class ReportController extends Controller
 {
@@ -46,9 +48,15 @@ class ReportController extends Controller
               $response = $client->post("/api", $options);
 
             // Getting the predicted responce
-            $rq = $response->getBody()->getContents();
-
-            dd($rq);
+            $req = $response->getBody()->getContents();
+            // dd($req);
+            $data = json_decode($req)->results->Condition;
+            $report_code = Carbon::now()->timestamp . rand(10000, 99000);
+            // dd($request->patient_id);
+            $create_report = Reports::create(['pdf_name' => $report_code, 'patient_id' => $request->patient_id, 'wbc' => $request->wbc, 'neno' => $request->neno, 'lymno' => $request->lymno, 'mono' => $request->mono, 'bano' => $request->bano, 'hb' => $request->hb, 'hct' => $request->hct, 'mcv' => $request->mcv, 'plt' => $request->plt, 'disease' => $data]);
+            // 'patient_id', 'wbc', 'neno', 'lymno', 'mono', 'eono', 'bano', 'hb', 'hct', 'mcv', 'plt', 'disease', 'next_date', 'doctor_comment', 'pdf_name'
+            $report_id = $create_report->id;
+            return view('report', \compact('data', 'report_id', 'create_report'));
 
         }catch(throwable $error){
             dd($error);

@@ -20,11 +20,13 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function(){
     Route::resource('patient', 'PatientController');
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/report_values/{id}', 'PatientController@report');
+    Route::post('/confirm', 'ReportController@store');
 });
 
-Route::post('/report', 'ReportController@store');
 
-Route::get('/report/{id}', 'HomeController@report');
+
+
 
 
 

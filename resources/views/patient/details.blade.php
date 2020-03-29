@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
                     <div class="row-fluid  pull-right">
-                        <a class="btn btn-sm btn-primary" href="{{url('/report', $patient->id)}}">Add a new Reoprt</a>
+                        <a class="btn btn-sm btn-primary" href="{{url('/report_values', $patient->id)}}">Add a new Reoprt</a>
                     </div>
                     <div class="container-fluid">
                         {{ csrf_field() }}

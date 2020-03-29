@@ -105,8 +105,9 @@ class PatientController extends Controller
         return redirect('home')->with('success', 'Patient details deleted successfully');
     }
 
-    public function report()
+    public function report($id)
     {
-        return view('report');
+        //getting patient id --> id is patient id 
+        return view('confirm_values', compact('id'));
     }
 }
