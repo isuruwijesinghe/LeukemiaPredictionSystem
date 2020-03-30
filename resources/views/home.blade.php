@@ -37,8 +37,9 @@
         <thead>
           <tr>
             <th width="75px">No</th>
-            <th width="400px">Name</th>
+            <th width="300px">Name</th>
             <th width="200px">ID</th>
+            <th width="100px">Gender</th>
             <th width="180px">Age</th>
             <th></th>
           </tr>
@@ -49,6 +50,7 @@
             <td>{{++$i}}.</td>
             <td>{{$patient->name}}</td>
             <td>{{$patient->national_id}}</td>
+            <td>{{$patient->gender}}</td>
             <td>{{$patient->age}}</td>
             <td>
             <form action="{{ route('patient.destroy', $patient->id) }}" method="post">

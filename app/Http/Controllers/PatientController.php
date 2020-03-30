@@ -38,6 +38,7 @@ class PatientController extends Controller
             'national_id' => 'required',
             'name' => 'required',
             'age' => 'required',
+            'gender' => 'required',
             'mobile_number' => 'required'
         ]);
         Patient::create($request->all());
@@ -82,12 +83,14 @@ class PatientController extends Controller
             'national_id' => 'required',
             'name' => 'required',
             'age' => 'required',
+            'gender' => 'required',
             'mobile_number' => 'required'
         ]);
         $patient = Patient::find($id);
         $patient->national_id = $request->get('national_id');
         $patient->name = $request->get('name');
         $patient->age = $request->get('age');
+        $patient->gender = $request->get('gender');
         $patient->mobile_number = $request->get('mobile_number');
         $patient->save();
         return redirect('home')->with('success', 'Patient details updated successfully');

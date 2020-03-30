@@ -16,9 +16,14 @@
                     @error('name') {{ $message }} @enderror
                   </div>
                   <div class="form-group">
-                    <label for="nputID">National ID</label>
+                    <label for="InputID">National ID</label>
                     <input type="text" name="national_id" class="form-control" id="inputID" placeholder="Enter New Patient National ID">
                     @error('national_id') {{ $message }} @enderror
+                  </div>
+                  <div class="form-group">
+                    <label for="InputGender">Gender</label>
+                    <input type="text" name="gender" class="form-control" id="inputGender" placeholder="Enter New Patient Gender">
+                    @error('gender') {{ $message }} @enderror
                   </div>
                   <div class="form-group">
                     <label for="InputAge">Age</label>

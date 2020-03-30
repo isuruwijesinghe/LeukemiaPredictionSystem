@@ -44,6 +44,10 @@
                                     <input type="text" name="age" class="form-control" value="{{$patient->age}}">
                                 </div>
                                 <div class="col-md-12">
+                                    <strong>Gender:</strong>
+                                    <input type="text" name="gender" class="form-control" value="{{$patient->gender}}">
+                                </div>
+                                <div class="col-md-12">
                                     <strong>Contact Number:</strong>
                                     <input type="text" name="mobile_number" class="form-control" value="{{$patient->mobile_number}}">
                                 </div>

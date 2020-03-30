@@ -31,6 +31,11 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
+                                    <strong>Gender : </strong> {{$patient->gender}}
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
                                     <strong>Mobile Number : </strong> {{$patient->mobile_number}}
                                 </div>
                             </div>
@@ -76,19 +81,19 @@
                             @if(!$reportsData->isEmpty())
                             @foreach($reportsData as $reportData)
                             <tr>
-                                <td>{{$reportData->created_at or 'n/a'}}</td>
-                                <td>{{$reportData->wbc or 'n/a'}}</td>
-                                <td>{{$reportData->neno or 'n/a'}}</td>
-                                <td>{{$reportData->lymno or 'n/a'}}</td>
-                                <td>{{$reportData->mono or 'n/a'}}</td>
-                                <td>{{$reportData->eono or 'n/a'}}</td>
-                                <td>{{$reportData->bano or 'n/a'}}</td>
-                                <td>{{$reportData->hb or 'n/a'}}</td>
-                                <td>{{$reportData->hct or 'n/a'}}</td>
-                                <td>{{$reportData->mcv or 'n/a'}}</td>
-                                <td>{{$reportData->plt or 'n/a'}}</td>
+                                <td>{{$reportData->created_at ?? null ?: 'n/a'}}</td>
+                                <td>{{$reportData->wbc ?? null ?: 'n/a'}}</td>
+                                <td>{{$reportData->neno ?? null ?: 'n/a'}}</td>
+                                <td>{{$reportData->lymno ?? null ?: 'n/a'}}</td>
+                                <td>{{$reportData->mono ?? null ?: 'n/a'}}</td>
+                                <td>{{$reportData->eono ?? null ?: 'n/a'}}</td>
+                                <td>{{$reportData->bano ?? null ?: 'n/a'}}</td>
+                                <td>{{$reportData->hb ?? null ?: 'n/a'}}</td>
+                                <td>{{$reportData->hct ?? null ?: 'n/a'}}</td>
+                                <td>{{$reportData->mcv ?? null ?: 'n/a'}}</td>
+                                <td>{{$reportData->plt ?? null ?: 'n/a'}}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-success" target="_blank" href="{{$reportData->pdf_name or '#'}}">VIEW</a>
+                                    <a class="btn btn-sm btn-success" target="_blank" href="{{$reportData->pdf_name ?? null ?: '#'}}">VIEW</a>
                                 </td>
                             </tr>
                             @endforeach

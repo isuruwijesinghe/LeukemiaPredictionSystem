@@ -1,10 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel-body">
                 <div class="panel-heading">
                     <h2><b class="text-primary">Leukemia Diagnosis Report</b></h2>
                 </div>
@@ -20,15 +19,15 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="font-weight-bold" style="width: 15%"><b>Name</b></td>
-                                                    <td style="width: 35%">{{$create_report->patient->name or 'n/a'}}</td>
+                                                    <td style="width: 35%">{{$create_report->patient->name ?? null ?: 'n/a'}}</td>
                                                     <td class="font-weight-bold" style="width: 15%"><b>Age</b></td>
-                                                    <td style="width: 35%">{{$create_report->patient->age or 'n/a'}}</td>
+                                                    <td style="width: 35%">{{$create_report->patient->age ?? null ?: 'n/a'}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold" style="width: 15%"><b>National ID</b></td>
-                                                    <td style="width: 35%">{{$create_report->patient->national_id or 'n/a'}}</td>
+                                                    <td style="width: 35%">{{$create_report->patient->national_id ?? null ?: 'n/a'}}</td>
                                                     <td class="font-weight-bold" style="width: 15%"><b>Mobile Number</b></td>
-                                                    <td style="width: 35%">{{$create_report->patient->mobile_number or 'n/a'}}</td>
+                                                    <td style="width: 35%">{{$create_report->patient->mobile_number ?? null ?: 'n/a'}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold" style="width: 15%"><b>Gender</b></td>
@@ -57,17 +56,70 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <h5><span class="badge badge-success">RBC</span></h5>
+                                                        <h5><span class="badge badge-primary">WBC</span></h5>
                                                     </td>
-                                                    <td>{{$create_report->rbc}}</td>
-                                                    <td>4.5 - 6.1</td>
+                                                    <td>{{$create_report->wbc}}</td>
+                                                    <td>4.0 - 10.0</td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <h5><span class="badge badge-primary">HB</span></h5>
+                                                        <h5><span class="badge badge-primary">Neutrophils</span></h5>
+                                                    </td>
+                                                    <td>{{$create_report->neno}}</td>
+                                                    <td>2.00 - 7.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5><span class="badge badge-primary">Lymphocytes</span></h5>
+                                                    </td>
+                                                    <td>{{$create_report->lymno}}</td>
+                                                    <td>1.00 - 3.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5><span class="badge badge-primary">Monocytes</span></h5>
+                                                    </td>
+                                                    <td>{{$create_report->mono}}</td>
+                                                    <td>0.20 - 1.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5><span class="badge badge-primary">Eosinophils</span></h5>
+                                                    </td>
+                                                    <td>{{$create_report->eono}}</td>
+                                                    <td>0.02 - 0.50
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                            
+                                                    <td>
+                                                        <h5><span class="badge badge-primary">Basophils</span></h5>
+                                                    </td>
+                                                    <td>{{$create_report->bano}}</td>
+                                                    <td>0.02 – 0.1
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5><span class="badge badge-primary">Hb</span></h5>
                                                     </td>
                                                     <td>{{$create_report->hb}}</td>
-                                                    <td>13.2 - 17.2
+                                                    <td>13.0 – 17.0
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5><span class="badge badge-primary">HCT(PCV)</span></h5>
+                                                    </td>
+                                                    <td>{{$create_report->hct}}</td>
+                                                    <td>40.0 – 50.0
+
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -75,33 +127,16 @@
                                                         <h5><span class="badge badge-primary">MCV</span></h5>
                                                     </td>
                                                     <td>{{$create_report->mcv}}</td>
-                                                    <td>80 - 100
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h5><span class="badge badge-primary">MCH</span></h5>
-                                                    </td>
-                                                    <td>{{$create_report->mch}}</td>
-                                                    <td>26.1 - 30.6
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h5><span class="badge badge-primary">MCHC</span></h5>
-                                                    </td>
-                                                    <td>{{$create_report->mchc}}</td>
-                                                    <td>30.8 - 34.9
+                                                    <td>83.0 – 99.0
 
                                                     </td>
                                                 </tr>
-                                                <tr>
+                                                <tr> 
                                                     <td>
-                                                        <h5><span class="badge badge-primary">RDW</span></h5>
+                                                        <h5><span class="badge badge-primary">Platelet Count</span></h5>
                                                     </td>
-                                                    <td>{{$create_report->rdw}}</td>
-                                                    <td>11.8 – 15.6
+                                                    <td>{{$create_report->plt}}</td>
+                                                    <td>150 – 410
 
                                                     </td>
                                                 </tr>
@@ -364,7 +399,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 
