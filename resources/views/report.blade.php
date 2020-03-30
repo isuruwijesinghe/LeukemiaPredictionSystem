@@ -189,8 +189,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
-                                    <div id="ThalassemiaMajor">
+                                    @if($create_report->disease == "CLL")
+                                    <div id="CLL">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -254,7 +254,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="IronDeficiency">
+                                    @elseif($create_report->disease == "HCL")
+                                    <div id="HCL">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -325,8 +326,8 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div id="AnemiaofChronic">
+                                    @elseif($create_report->disease == "CML")
+                                    <div id="CML">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -393,7 +394,143 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @elseif($create_report->disease == "AML")
+                                    <div id="AML">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
 
+                                                    <table class="table table-bordered">
+                                                        <tr>
+                                                            <td class="bg-warning text-dark">
+                                                                <h4><b>Symptoms</b></h4>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Fast heartbeat</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Body aches</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Feeling tired or weak</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Getting tired easily during or after physical activity </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Pale skin </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Shortness of breath
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div><br>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+
+                                                    <table class="table table-bordered">
+                                                        <tr>
+                                                            <td class="bg-warning text-dark">
+                                                                <h4><b>Causes</b></h4>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Your kidneys may produce less erythropoietin (EPO), a hormone that signals your bone marrow—the spongy tissue inside most of your bones—to make red blood cells.
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Your bone marrow may not respond normally to EPO, making fewer red blood cells than needed.
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Your red blood cells may live for a shorter time than normal, causing them to die faster than they can be replaced. </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Without iron supplementation, iron deficiency anemia occurs in many pregnant women because their iron stores need to serve their own increased blood volume as well as be a source of hemoglobin for the growing fetus. </td>
+                                                        </tr>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @elseif($create_report->disease == "Leukemia Positive")
+                                    <div id="Leukemia Positive">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+
+                                                    <table class="table table-bordered">
+                                                        <tr>
+                                                            <td class="bg-warning text-dark">
+                                                                <h4><b>Symptoms</b></h4>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Fast heartbeat</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Body aches</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Feeling tired or weak</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Getting tired easily during or after physical activity </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Pale skin </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Shortness of breath
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div><br>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+
+                                                    <table class="table table-bordered">
+                                                        <tr>
+                                                            <td class="bg-warning text-dark">
+                                                                <h4><b>Causes</b></h4>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Your kidneys may produce less erythropoietin (EPO), a hormone that signals your bone marrow—the spongy tissue inside most of your bones—to make red blood cells.
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Your bone marrow may not respond normally to EPO, making fewer red blood cells than needed.
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Your red blood cells may live for a shorter time than normal, causing them to die faster than they can be replaced. </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Without iron supplementation, iron deficiency anemia occurs in many pregnant women because their iron stores need to serve their own increased blood volume as well as be a source of hemoglobin for the growing fetus. </td>
+                                                        </tr>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
                                     <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
@@ -412,32 +549,60 @@
     });
 
     function myFunction() {
-        var thala = document.getElementById("ThalassemiaMajor");
-        var iron = document.getElementById("IronDeficiency");
-        var acd = document.getElementById("AnemiaofChronic");
+        var CLL = document.getElementById("CLL");
+        var HCL = document.getElementById("HCL");
+        var CML = document.getElementById("CML");
+        var AML = document.getElementById("AML");
+        var positive = document.getElementById("Leukemia Positive");
         // console.log({{$create_report->disease}});
-        if ("{{$create_report->disease}}" == "ThalassemiaMajor") {
+        if ("{{$create_report->disease}}" == "CLL") {
          
-            $("#ThalassemiaMajor").show();
-            $("#IronDeficiency").hide();
-            $("#AnemiaofChronic").hide();
+            $("#CLL").show();
+            $("#HCL").hide();
+            $("#CML").hide();
+            $("#AML").hide();
+            $("#Leukemia Positive").hide();
 
-        } else if ("{{$create_report->disease}}" == "IronDeficiency") {
+        } else if ("{{$create_report->disease}}" == "HCL") {
      
-            $("#ThalassemiaMajor").hide();
-            $("#IronDeficiency").show();
-            $("#AnemiaofChronic").hide();
+            $("#CLL").hide();
+            $("#HCL").show();
+            $("#CML").hide();
+            $("#AML").hide();
+            $("#Leukemia Positive").hide();
 
-        } else if ("{{$create_report->disease}}" == "AnemiaofChronic") {
+        } else if ("{{$create_report->disease}}" == "CML") {
           
-            $("#ThalassemiaMajor").hide();
-            $("#IronDeficiency").hide();
-            $("#AnemiaofChronic").show();
-        } else if ("{{$create_report->disease}}" == "Normal"){
+            $("#CLL").hide();
+            $("#HCL").hide();
+            $("#CML").show();
+            $("#AML").hide();
+            $("#Leukemia Positive").hide();
+
+        }else if ("{{$create_report->disease}}" == "AML") {
+          
+            $("#CLL").hide();
+            $("#HCL").hide();
+            $("#CML").hide();
+            $("#AML").show();
+            $("#Leukemia Positive").hide();
+
+        }else if ("{{$create_report->disease}}" == "Leukemia Positive") {
+          
+            $("#CLL").hide();
+            $("#HCL").hide();
+            $("#CML").hide();
+            $("#AML").hide();
+            $("#Leukemia Positive").show();
+
+        }else if ("{{$create_report->disease}}" == "Normal"){
            
-            $("#ThalassemiaMajor").hide();
-            $("#IronDeficiency").hide();
-            $("#AnemiaofChronic").hide();
+            $("#CLL").hide();
+            $("#HCL").hide();
+            $("#CML").hide();
+            $("#AML").hide();
+            $("#Leukemia Positive").hide();
+
         } else{
 
         }
