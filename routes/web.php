@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/report_values/{id}', 'PatientController@report');
     Route::post('/confirm', 'ReportController@store');
+    Route::post('/report_generate', 'ReportController@reportGenerate');
 });
 
 

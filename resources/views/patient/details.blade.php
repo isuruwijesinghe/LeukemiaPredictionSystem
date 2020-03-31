@@ -110,13 +110,3 @@
 </div>
 @endsection
 
-@section('scripts')
-<script>
-$(document).ready( function () {
-    $('#reportsTable').DataTable({
-        responsive: true,
-        "ordering": false
-    });
-} );
-</script>
-@endsection

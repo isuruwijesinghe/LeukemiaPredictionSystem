@@ -1,16 +1,30 @@
-@extends('layouts.app')
-@section('content')
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ACD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
 
 <div class="container">
     <div class="row">
-            <!-- <div class="panel-body"> -->
+            <div class="panel-body">
                 <div class="panel-heading">
                     <h2><b class="text-primary">Leukemia Diagnosis Report</b></h2>
                 </div>
-                <!-- <div class="panel-body"> -->
+                <div class="panel-body">
                     <div class="container-fluid">
-                        <form role="form" method="POST" action="{{ url('/report_generate') }}" enctype="multipart/form-data">
-                            {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
@@ -19,15 +33,15 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="font-weight-bold" style="width: 15%"><b>Name</b></td>
-                                                    <td style="width: 35%">{{$create_report->patient->name ?? null ?: 'n/a'}}</td>
+                                                    <td style="width: 35%">{{$report->patient->name ?? null ?: 'n/a'}}</td>
                                                     <td class="font-weight-bold" style="width: 15%"><b>Age</b></td>
-                                                    <td style="width: 35%">{{$create_report->patient->age ?? null ?: 'n/a'}}</td>
+                                                    <td style="width: 35%">{{$report->patient->age ?? null ?: 'n/a'}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold" style="width: 15%"><b>National ID</b></td>
-                                                    <td style="width: 35%">{{$create_report->patient->national_id ?? null ?: 'n/a'}}</td>
+                                                    <td style="width: 35%">{{$report->patient->national_id ?? null ?: 'n/a'}}</td>
                                                     <td class="font-weight-bold" style="width: 15%"><b>Mobile Number</b></td>
-                                                    <td style="width: 35%">{{$create_report->patient->mobile_number ?? null ?: 'n/a'}}</td>
+                                                    <td style="width: 35%">{{$report->patient->mobile_number ?? null ?: 'n/a'}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold" style="width: 15%"><b>Gender</b></td>
@@ -58,14 +72,14 @@
                                                     <td>
                                                         <h5><span class="badge badge-primary">WBC</span></h5>
                                                     </td>
-                                                    <td>{{$create_report->wbc}}</td>
+                                                    <td>{{$report->wbc}}</td>
                                                     <td>4.0 - 10.0</td>
                                                 </tr>
                                                 <tr>
                                                     <td>
                                                         <h5><span class="badge badge-primary">Neutrophils</span></h5>
                                                     </td>
-                                                    <td>{{$create_report->neno}}</td>
+                                                    <td>{{$report->neno}}</td>
                                                     <td>2.00 - 7.00
                                                     </td>
                                                 </tr>
@@ -73,7 +87,7 @@
                                                     <td>
                                                         <h5><span class="badge badge-primary">Lymphocytes</span></h5>
                                                     </td>
-                                                    <td>{{$create_report->lymno}}</td>
+                                                    <td>{{$report->lymno}}</td>
                                                     <td>1.00 - 3.00
                                                     </td>
                                                 </tr>
@@ -81,7 +95,7 @@
                                                     <td>
                                                         <h5><span class="badge badge-primary">Monocytes</span></h5>
                                                     </td>
-                                                    <td>{{$create_report->mono}}</td>
+                                                    <td>{{$report->mono}}</td>
                                                     <td>0.20 - 1.00
                                                     </td>
                                                 </tr>
@@ -89,7 +103,7 @@
                                                     <td>
                                                         <h5><span class="badge badge-primary">Eosinophils</span></h5>
                                                     </td>
-                                                    <td>{{$create_report->eono}}</td>
+                                                    <td>{{$report->eono}}</td>
                                                     <td>0.02 - 0.50
 
                                                     </td>
@@ -99,7 +113,7 @@
                                                     <td>
                                                         <h5><span class="badge badge-primary">Basophils</span></h5>
                                                     </td>
-                                                    <td>{{$create_report->bano}}</td>
+                                                    <td>{{$report->bano}}</td>
                                                     <td>0.02 – 0.1
 
                                                     </td>
@@ -108,7 +122,7 @@
                                                     <td>
                                                         <h5><span class="badge badge-primary">Hb</span></h5>
                                                     </td>
-                                                    <td>{{$create_report->hb}}</td>
+                                                    <td>{{$report->hb}}</td>
                                                     <td>13.0 – 17.0
 
                                                     </td>
@@ -117,7 +131,7 @@
                                                     <td>
                                                         <h5><span class="badge badge-primary">HCT(PCV)</span></h5>
                                                     </td>
-                                                    <td>{{$create_report->hct}}</td>
+                                                    <td>{{$report->hct}}</td>
                                                     <td>40.0 – 50.0
 
                                                     </td>
@@ -126,7 +140,7 @@
                                                     <td>
                                                         <h5><span class="badge badge-primary">MCV</span></h5>
                                                     </td>
-                                                    <td>{{$create_report->mcv}}</td>
+                                                    <td>{{$report->mcv}}</td>
                                                     <td>83.0 – 99.0
 
                                                     </td>
@@ -135,7 +149,7 @@
                                                     <td>
                                                         <h5><span class="badge badge-primary">Platelet Count</span></h5>
                                                     </td>
-                                                    <td>{{$create_report->plt}}</td>
+                                                    <td>{{$report->plt}}</td>
                                                     <td>150 – 410
 
                                                     </td>
@@ -151,45 +165,47 @@
                                                 <table class="table table-bordered">
                                                     <tbody>
                                                         <tr>
-                                                            <td class="bg-primary text-white">
+                                                            <td class="bg-danger text-white">
                                                                 <h4><b>Diagnosis</b></h4>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td><b>
-                                                                    {{$create_report->disease}}
-                                                                </b></td>
+                                                            <td>
+                                                                {{$report->disease}}
+                                                            </td>
                                                         </tr>
-                                                       
                                                         <tr>
-                                                            <td class="bg-primary text-white">
-                                                                <h4><b>Docotor comments</b></h4>
+
+                                                            <td class="bg-success text-white">
+                                                                <h4><b>Next blood count date</b></h4>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <textarea class="form-control" rows="3" name="doctor_cmnt"></textarea>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <input type="hidden" name="report_id" value="{{$report_id}}">
-
-                                                            <td class="bg-primary text-white">
-                                                                <h4><b>Next blood count date</b></h4>
-                                                            </td>
-                                                        </tr>
-            
-                                                    </tbody>
-                                                </table>
-                                                <div class="form-group col-sm-12">
-                                                    <div class='col-sm-12'>
-                                                        <input type='text' class="form-control" id='datetimepicker8' name="date_order"/>
-                                                    </div>
-                                                </div>
+                                                                <div class="form-group pull-left">
+                                                                    {{$report->next_date}}
+                                                                </div>
                                             </div>
+
+
+                                            </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="bg-primary text-white">
+                                                    <h4><b>Docotor comments</b></h4>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    {{$report->doctor_comment}}
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    @if($create_report->disease == "CLL")
+                                    @if($report->disease == "CLL")
                                     <div id="CLL">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -242,7 +258,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @elseif($create_report->disease == "HCL")
+                                    @elseif($report->disease == "HCL")
                                     <div id="HCL">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -316,7 +332,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @elseif($create_report->disease == "CML")
+                                    @elseif($report->disease == "CML")
                                     <div id="CML">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -385,7 +401,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @elseif($create_report->disease == "AML")
+                                    @elseif($report->disease == "AML")
                                     <div id="AML">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -447,7 +463,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @elseif($create_report->disease == "Leukemia Positive")
+                                    @elseif($report->disease == "Leukemia Positive")
                                     <div id="Leukemia Positive">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -528,35 +544,11 @@
                                         </div>
                                     </div>
                                     @endif
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
                     </div>
-                <!-- </div> -->
-            <!-- </div> -->
+                </div>
+            </div>
     </div>
 </div>
-@endsection
 
-@section('scripts')
-<script type="text/javascript">   
-    $(function () {
-		    $('#datetimepicker8').datetimepicker({
-		    	sideBySide: true,
-		    	showClose: true,
-		    	// toolbarPlacement: "top",
-				format: 'YYYY-MM-DD',
-                icons: {
-                    time: 'fas fa-clock',
-                    date: 'fas fa-calendar-alt',
-                    up: 'fas fa-chevron-up',
-                    down: 'fas fa-chevron-down',
-                    previous: 'fas fa-chevron-left',
-                    next: 'fas fa-chevron-right',
-                    today: 'fas fa-check',
-                    clear: 'fas fa-trash',
-                    close: 'fas fa-times'
-                }
-		    });
-		});
-    </script>
-@endsection 
+</body>
+</html>

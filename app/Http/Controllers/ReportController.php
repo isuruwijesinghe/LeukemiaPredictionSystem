@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Reports;
+use App\Jobs\SendReportProcess;
+use Storage;
 
 class ReportController extends Controller
 {
@@ -56,10 +58,27 @@ class ReportController extends Controller
             $create_report = Reports::create(['pdf_name' => $report_code, 'patient_id' => $request->patient_id, 'wbc' => $request->WBC, 'neno' => $request->Neutrophils, 'lymno' => $request->Lymphocytes, 'mono' => $request->Monocytes, 'eono' => $request->Eosinophils, 'bano' => $request->Basophils, 'hb' => $request->Hb, 'hct' => $request->HCT, 'mcv' => $request->MCV, 'plt' => $request->PlateletCount, 'disease' => $data]);
             // 'patient_id', 'wbc', 'neno', 'lymno', 'mono', 'eono', 'bano', 'hb', 'hct', 'mcv', 'plt', 'disease', 'next_date', 'doctor_comment', 'pdf_name'
             $report_id = $create_report->id;
-            return view('report', \compact('data', 'report_id', 'create_report'));
+            $current_time = Carbon::now()->format('d-m-Y');
+            return view('report', \compact('data', 'report_id', 'create_report','current_time'));
 
         }catch(throwable $error){
             dd($error);
         }
+    }
+
+    public function reportGenerate(Request $request){
+        try {
+            $report = Reports::with('patient')->where('id', '=', $request->report_id)->first();
+            //after generating report Doctor enter next date and comments
+            if (!is_null($report)) {
+              $report->update(['next_date' => $request->date_order, 'doctor_comment' => $request->doctor_cmnt]);
+            }
+            //job process for pdf gen and send sms
+            // Storage::put('file_name.txt', 'content', 'public');
+            dispatch(new SendReportProcess($report->id));
+            return redirect()->guest('home')->with('success', 'Patient report sent successfully');
+          } catch (\Throwable $th) {
+              dd($th);
+           }
     }
 }
