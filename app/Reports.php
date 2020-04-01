@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reports extends Model
 {
     protected $table = "reports";
-    protected $fillable = ['patient_id', 'wbc', 'neno', 'lymno', 'mono', 'eono', 'bano', 'hb', 'hct', 'mcv', 'plt', 'disease', 'next_date', 'doctor_comment', 'pdf_name'];
+    protected $fillable = ['patient_id', 'wbc', 'neno', 'lymno', 'mono', 'eono', 'bano', 'hb', 'hct', 'mcv', 'plt', 'disease', 'next_date', 'doctor_comment', 'pdf_name', 'pdf_url'];
 
     public function patient()
     {

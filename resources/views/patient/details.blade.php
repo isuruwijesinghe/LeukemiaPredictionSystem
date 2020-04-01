@@ -93,7 +93,7 @@
                                 <td>{{$reportData->mcv ?? null ?: 'n/a'}}</td>
                                 <td>{{$reportData->plt ?? null ?: 'n/a'}}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-success" target="_blank" href="{{$reportData->pdf_name ?? null ?: '#'}}">VIEW</a>
+                                    <a class="btn btn-sm btn-success" target="_blank" href="{{$reportData->pdf_url ?? null ?: '#'}}">VIEW</a>
                                 </td>
                             </tr>
                             @endforeach

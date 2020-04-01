@@ -52,8 +52,15 @@ class SendReportProcess implements ShouldQueue
         $canvas->page_text(275, 760, "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
         //saving pdf with a generated number
         $file_name = $report->pdf_name . '.pdf';
-            Storage::disk('public')->put($file_name, $pdf->output());
-            // Storage::disk('public')->put($file_name, $pdf->output());
+        Storage::disk('public')->put($file_name, $pdf->output());
+        // get pdf path    
+        // $file_url = Storage::disk('public')->url($file_name);
+        $file_url = Storage::url($file_name);
+        // $file_url = 'file:///IIT/FYP/blog/storage/app/public/' . $file_name;
+        
+        //update url
+        $report->update(['pdf_url' => $file_url]);
+
         }catch (\Throwable $th) {
               dd($th);
            }
