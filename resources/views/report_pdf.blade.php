@@ -4,14 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ACD</title>
+    <title>Leukemia Diagnosis Report</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="main.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+
+   
 
 </head>
 
@@ -45,7 +43,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold" style="width: 15%"><b>Gender</b></td>
-                                                    <td style="width: 35%">Male</td>
+                                                    <td style="width: 35%">{{$report->patient->gender ?? null ?: 'n/a'}}</td>
                                                     <td class="font-weight-bold" style="width: 15%"><b>Date</b></td>
                                                     <td style="width: 35%">{{$current_time ?? null ?: 'n/a'}}</td>
                                                 </tr>
@@ -57,10 +55,13 @@
 
                             <div class="row">
                                 <div class="col-md-12">
+                                    <div class="panel-heading">
+                                        <h4><b class="text-primary">CBC Results</b></h4>
+                                    </div>
                                     <div class="row">
                                         <table class="table table-bordered">
                                             <thead>
-                                                <h4><b class="text-primary">CBC Results</b></h4>
+                                                
                                                 <tr class="bg-dark text-white">
                                                     <th>Parameter</th>
                                                     <th>Results</th>
@@ -154,10 +155,18 @@
 
                                                     </td>
                                                 </tr>
+                                                
                                             </tbody>
                                         </table>
 
                                     </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
 
                                     <div class="row">
                                         <div class="col-md-12">
@@ -185,7 +194,7 @@
                                                                 <div class="form-group pull-left">
                                                                     {{$report->next_date}}
                                                                 </div>
-                                            </div>
+                                        
 
 
                                             </td>
@@ -204,6 +213,7 @@
                                             </tbody>
                                             </table>
                                         </div>
+                                    </div>
                                     </div>
                                     @if($report->disease == "CLL")
                                     <div id="CLL">
@@ -299,7 +309,7 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                        </div><br>
+                                        </div><br><br><br><br><br><br>
 
                                         <div class="row">
                                             <div class="col-md-12">
@@ -368,7 +378,7 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                        </div><br>
+                                        </div><br><br><br><br><br><br><br><br><br><br>
 
                                         <div class="row">
                                             <div class="col-md-12">
@@ -510,7 +520,7 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                        </div><br>
+                                        </div><br><br><br><br>
 
                                         <div class="row">
                                             <div class="col-md-12">
@@ -544,11 +554,20 @@
                                         </div>
                                     </div>
                                     @endif
-                    </div>
+                    
+                                    </div>
+                                </div>
+    
+    
                 </div>
             </div>
     </div>
 </div>
+
+<script src="main.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
 
 </body>
 </html>

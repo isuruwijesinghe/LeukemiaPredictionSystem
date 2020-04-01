@@ -31,7 +31,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold" style="width: 15%"><b>Gender</b></td>
-                                                    <td style="width: 35%">Male</td>
+                                                    <td style="width: 35%">{{$create_report->patient->gender ?? null ?: 'n/a'}}</td>
                                                     <td class="font-weight-bold" style="width: 15%"><b>Date</b></td>
                                                     <td style="width: 35%">{{$current_time ?? null ?: 'n/a'}}</td>
                                                 </tr>

@@ -10,6 +10,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use PDF;
 use App\Reports;
 use Storage;
+use Carbon\Carbon;
 
 class SendReportProcess implements ShouldQueue
 {
@@ -37,12 +38,13 @@ class SendReportProcess implements ShouldQueue
         //
         try{
         $report = Reports::with('patient')->where('id', '=', $this->report_id)->first();
+        $current_time = Carbon::now()->format('d-m-Y');
         if (is_null($report)) {
             return 'false';
         }
 
         //create PDF
-        $pdf = PDF::loadView('report_pdf', compact('report'));
+        $pdf = PDF::loadView('report_pdf', compact('report', 'current_time'));
         $pdf->output();
         $dom_pdf = $pdf->getDomPDF();
         $canvas = $dom_pdf->get_canvas();
