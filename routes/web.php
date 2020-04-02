@@ -20,9 +20,13 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function(){
     Route::resource('patient', 'PatientController');
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/report_values/{id}', 'PatientController@report');
+    // Route::get('/report_values/{id}', 'PatientController@report');
     Route::post('/confirm', 'ReportController@store');
     Route::post('/report_generate', 'ReportController@reportGenerate');
+
+    // cloud vision api
+    Route::get('/report_values/{id}', 'ReportController@displayForm');
+    Route::post('/image_upload', 'ReportController@annotateImage');
 });
 
 

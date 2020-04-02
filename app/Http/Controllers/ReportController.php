@@ -7,10 +7,92 @@ use Carbon\Carbon;
 use App\Reports;
 use App\Jobs\SendReportProcess;
 use Storage;
+use Illuminate\Support\Facades\Validator;
+use GoogleCloudVision\GoogleCloudVision;
+use GoogleCloudVision\Request\AnnotateImageRequest;
 
 class ReportController extends Controller
 {
    
+    //show the upload form
+    public function displayForm($id)
+    {
+    return view('image_upload', compact('id'));
+    }
+
+    public function annotateImage(Request $request)
+  {
+
+    $validator = Validator::make($request->all(), [
+      'patient_id' => 'required',
+      'image' => 'required'
+    ]);
+    if ($validator->passes()) {
+      //convert image tos base64
+      $image = base64_encode(file_get_contents($request->file('image')));
+
+
+      $photoDir = "temp_reports/";
+      //date format extension
+      $currentTime = Carbon::now()->timestamp;
+      $photo = $request->image;
+
+          $extension = $photo->getClientOriginalExtension();
+          $fileName = rand(11111, 99999999) . $currentTime . '.' . $extension;
+          $photo->move($photoDir, $fileName);
+
+          $file_name = $photoDir . $fileName;
+        
+      //dd($file_name);
+      //prepare request
+      $g_request = new AnnotateImageRequest();
+      //set the image for OCR
+      $g_request->setImage($image);
+      $g_request->setFeature("TEXT_DETECTION");
+      $gcvRequest = new GoogleCloudVision([$g_request],  env('GOOGLE_CLOUD_KEY'));
+
+      //send annotation request
+      $response = $gcvRequest->annotate();
+
+      dd(json_encode(["description" => $response->responses[0]->textAnnotations[0]->description]));
+
+    //   //getting responce
+    //   $responce = json_encode(["description" => $response->responses[0]->textAnnotations[0]->description]);
+    //   $responce = trim($responce, '-{}description":');
+    //   $responce = preg_replace("/r|n/", "", $responce);
+    //   $responce = str_replace('-', '', $responce);
+    //   $responce = preg_replace('/\\\\/', '', $responce);
+    //   $responce = str_replace('Complete', '', $responce);
+    //   $responce = str_replace('Blood', '', $responce);
+    //   $responce = str_replace('Cout', '', $responce);
+    //   $responce = str_replace('RepotNameDOBAgeCotact', '', $responce);
+    //   $responce = str_replace('No', '', $responce);
+    //   $responce = str_replace('GedeTest', '', $responce);
+    //   $responce = str_replace('Results', '', $responce);
+    //   $responce = str_replace('PLT', '', $responce);
+    //   $responce = str_replace('LYM', '', $responce);
+
+
+    //   $responce = str_replace('RBC', '', $responce);
+    //   $responce = str_replace('MCV', '', $responce);
+    //   $responce = str_replace('HB', '', $responce);
+    //   $responce = str_replace('MCHC', '', $responce);
+    //   $responce = str_replace('MCH', '', $responce);
+    //   $responce = str_replace('  ', ',', $responce);
+    //   $responce = str_replace('RDW', '', $responce);
+    //   $responce = str_replace(' ', ',', $responce);
+    //   $responce = trim($responce, ",");
+    //   $responce = explode(',', $responce);
+    //   $newArray = array_slice($responce, 0, 6, true);
+
+    //   //getting results array
+    //   $patient_id = $request->patient_id;
+    //   Session::put('newArray', $newArray);
+    //   //passing data to OCR result page
+    //   return view('confirm_values', compact('newArray', 'patient_id', 'file_name'));
+    }
+    return redirect()->back()->with(['error' => $validator->getMessageBag()->toArray()]);
+  }
 
     public function store(Request $request){
         
