@@ -35,11 +35,12 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'national_id' => 'required',
+            'national_id' => ['required', 'regex:/^([0-9]{9}[x|X|v|V]|[0-9]{7}[0][0-9]{4})$/'],
             'name' => 'required',
-            'age' => 'required',
+            'age' => 'required|numeric',
             'gender' => 'required',
-            'mobile_number' => 'required'
+            'mobile_number' => ['required', 'regex:/^(?:\+94)[0-9]{9}$/'],
+            'email' => 'required|email'
         ]);
         Patient::create($request->all());
         return redirect('home')->with('success', 'New patient created successfully');
@@ -80,11 +81,12 @@ class PatientController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'national_id' => 'required',
+            'national_id' => ['required', 'regex:/^([0-9]{9}[x|X|v|V]|[0-9]{7}[0][0-9]{4})$/'],
             'name' => 'required',
-            'age' => 'required',
+            'age' => 'required|numeric',
             'gender' => 'required',
-            'mobile_number' => 'required'
+            'mobile_number' => ['required', 'regex:/^(?:\+94)[0-9]{9}$/'],
+            'email' => 'required|email'
         ]);
         $patient = Patient::find($id);
         $patient->national_id = $request->get('national_id');
@@ -92,6 +94,7 @@ class PatientController extends Controller
         $patient->age = $request->get('age');
         $patient->gender = $request->get('gender');
         $patient->mobile_number = $request->get('mobile_number');
+        $patient->email = $request->get('email');
         $patient->save();
         return redirect('home')->with('success', 'Patient details updated successfully');
     }

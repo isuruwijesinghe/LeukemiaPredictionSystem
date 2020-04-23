@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['national_id', 'name', 'age', 'gender', 'mobile_number'];
+    protected $fillable = ['national_id', 'name', 'age', 'gender', 'mobile_number', 'email'];
 
     public function Report()
     {

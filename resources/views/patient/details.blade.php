@@ -39,6 +39,11 @@
                                     <strong>Mobile Number : </strong> {{$patient->mobile_number}}
                                 </div>
                             </div>
+                            <!-- <div class="col-md-12">
+                                <div class="form-group">
+                                    <strong>Email : </strong> {{$patient->email}}
+                                </div>
+                            </div> -->
                             <div class="col-md-12">
                                 <a href="{{ url('/home')}}" class="btn btn-sm btn-success">Back</a>
                             </div>

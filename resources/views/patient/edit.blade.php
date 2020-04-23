@@ -14,7 +14,6 @@
                         </div>
 
                         @if ($errors->any())
-                        dd($error)
                         <div class="alert alert-danger">
                             <strong>Whoops! </strong> there where some problems with your input.<br>
                             <ul>
@@ -34,22 +33,32 @@
                                 <div class="col-md-12">
                                     <strong>ID :</strong>
                                     <input type="text" name="national_id" class="form-control" value="{{$patient->national_id}}">
+                                    @error('national_id') {{ $message }} @enderror
                                 </div>
                                 <div class="col-md-12">
                                     <strong>Name :</strong>
                                     <input type="text" name="name" class="form-control" value="{{$patient->name}}">
+                                    @error('name') {{ $message }} @enderror
                                 </div>
                                 <div class="col-md-12">
                                     <strong>Age:</strong>
                                     <input type="text" name="age" class="form-control" value="{{$patient->age}}">
+                                    @error('gender') {{ $message }} @enderror
                                 </div>
                                 <div class="col-md-12">
                                     <strong>Gender:</strong>
                                     <input type="text" name="gender" class="form-control" value="{{$patient->gender}}">
+                                    @error('gender') {{ $message }} @enderror
                                 </div>
                                 <div class="col-md-12">
                                     <strong>Contact Number:</strong>
                                     <input type="text" name="mobile_number" class="form-control" value="{{$patient->mobile_number}}">
+                                    @error('mobile_number') {{ $message }} @enderror
+                                </div>
+                                <div class="col-md-12">
+                                    <strong>Email:</strong>
+                                    <input type="text" name="email" class="form-control" value="{{$patient->email}}">
+                                    @error('email') {{ $message }} @enderror
                                 </div>
 
                                 <div class="col-md-12" style="margin-top: 10px;">
