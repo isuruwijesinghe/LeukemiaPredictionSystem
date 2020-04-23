@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// use App\Mail\ReportMail;
+// use Illuminate\Support\Facades\Mail;
+// Route::get('/email', function () {
+//     $file_url = "this is the url";
+//     Mail::to('email@email.com')->send(new ReportMail($file_url));
+//     return new ReportMail($file_url);
+// });
+
 Route::middleware(['auth'])->group(function(){
     Route::resource('patient', 'PatientController');
     Route::get('/home', 'HomeController@index')->name('home');

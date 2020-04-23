@@ -11,6 +11,8 @@ use PDF;
 use App\Reports;
 use Storage;
 use Carbon\Carbon;
+use App\Mail\ReportMail;
+use Illuminate\Support\Facades\Mail;
 
 class SendReportProcess implements ShouldQueue
 {
@@ -67,28 +69,31 @@ class SendReportProcess implements ShouldQueue
         $report->update(['pdf_url' => $file_url]);
 
         
-        // sending sms with textit.biz
-        $user = "94719309953";
-        $password = "8458";
-        $text = urlencode('Check your report ' . $file_url);
-        $to = $report->patient->mobile_number;
-        // $to = "94719309953";
+        // // sending sms with textit.biz
+        // $user = "94719309953";
+        // $password = "8458";
+        // $text = urlencode('Check your report ' . $file_url);
+        // $to = $report->patient->mobile_number;
+        // // $to = "94719309953";
         
         
-        $baseurl ="http://www.textit.biz/sendmsg";
-        $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
-        $ret = file($url);
+        // $baseurl ="http://www.textit.biz/sendmsg";
+        // $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
+        // $ret = file($url);
         
-        $res= explode(":",$ret[0]);
+        // $res= explode(":",$ret[0]);
         
-        if (trim($res[0])=="OK")
-        {
-            echo "Message Sent - ID : ".$res[1];
-        }
-        else
-        {
-            echo "Sent Failed - Error : ".$res[1];
-        }
+        // if (trim($res[0])=="OK")
+        // {
+        //     echo "Message Sent - ID : ".$res[1];
+        // }
+        // else
+        // {
+        //     echo "Sent Failed - Error : ".$res[1];
+        // }
+
+        //sending email
+        Mail::to($report->patient->email)->send(new ReportMail($file_url));
 
         }catch (\Throwable $th) {
               dd($th);

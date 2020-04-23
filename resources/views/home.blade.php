@@ -8,11 +8,16 @@
 
       <div class="card-tools">
         <div class="input-group input-group-sm" style="width: 150px;">
-          <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+        <div class="row pull-right">
+
+      <a class="btn btn-sm btn-success" href="{{ route('patient.create') }}">Create New Patient</a>
+
+    </div>
+          <!-- <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
           <div class="input-group-append">
             <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -20,20 +25,20 @@
 
     <div class="card-body table-responsive p-0">
 
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
     <div class="row pull-right">
 
       <a class="btn btn-sm btn-success" href="{{ route('patient.create') }}">Create New Patient</a>
 
     </div>
-    </div><br>
+    </div><br> -->
 
     @if ($message = Session::get('success'))
     <div style="margin-top: 20px;" class="alert alert-success">
       <p>{{$message}}</p>
     </div>
     @endif
-      <table class="table table-hover text-nowrap">
+      <table class="table table-hover text-nowrap" id="table">
         <thead>
           <tr>
             <th width="75px">No</th>
@@ -71,3 +76,17 @@
 </div>
 @endsection
 
+@section('scripts')
+<script type="text/javascript">  
+$(document).ready(function() {
+    $('#table').DataTable({
+      columnDefs: [
+            {
+                targets: [ 0, 1, 2 ],
+                className: 'mdl-data-table__cell--non-numeric'
+            }
+        ]
+});
+} );
+</script>
+@endsection 
