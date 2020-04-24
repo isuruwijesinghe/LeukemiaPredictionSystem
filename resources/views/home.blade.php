@@ -2,43 +2,29 @@
 
 @section('content')
 <div class="container">
-  <div class="card">
-    <div class="card-header">
+  <div class="card shadow">
+    <div class="card-header border-0">
       <h3 class="card-title">Patients</h3>
 
       <div class="card-tools">
-        <div class="input-group input-group-sm" style="width: 150px;">
-        <div class="row pull-right">
-
-      <a class="btn btn-sm btn-success" href="{{ route('patient.create') }}">Create New Patient</a>
-
-    </div>
-          <!-- <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-          </div> -->
+        <div class="input-group input-group-sm pt-2" style="width: 150px;">
+        <!-- create new patient button  -->
+        <a class="btn btn-sm btn-success" href="{{ route('patient.create') }}">Create New Patient</a>
         </div>
       </div>
     </div>
     <!-- /.card-header -->
 
     <div class="card-body table-responsive p-0">
-
-    <!-- <div class="container-fluid">
-    <div class="row pull-right">
-
-      <a class="btn btn-sm btn-success" href="{{ route('patient.create') }}">Create New Patient</a>
-
-    </div>
-    </div><br> -->
-
+    
+    <!-- success or error message  -->
     @if ($message = Session::get('success'))
     <div style="margin-top: 20px;" class="alert alert-success">
       <p>{{$message}}</p>
     </div>
     @endif
-      <table class="table table-hover text-nowrap" id="table">
+    <div class="col pt-3 pb-3">
+      <table class="table table-hover text-nowrap" id="table" width="100%">
         <thead>
           <tr>
             <th width="75px">No</th>
@@ -69,6 +55,7 @@
           @endforeach
         </tbody>
       </table>
+      </div>
     </div>
     <!-- /.card-body -->
   </div>
@@ -80,12 +67,17 @@
 <script type="text/javascript">  
 $(document).ready(function() {
     $('#table').DataTable({
-      columnDefs: [
-            {
-                targets: [ 0, 1, 2 ],
-                className: 'mdl-data-table__cell--non-numeric'
-            }
-        ]
+      "order": [],
+    "aoColumns": [
+    { "bSortable": true },
+    { "bSortable": true },
+    { "bSortable": true },
+    { "bSortable": true },
+    { "bSortable": true },
+    { "bSortable": false }
+],
+responsive: true
+      
 });
 } );
 </script>

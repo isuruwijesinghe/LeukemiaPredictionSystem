@@ -39,7 +39,9 @@ class SendReportProcess implements ShouldQueue
     {
         //
         try{
+        //get report details from report id
         $report = Reports::with('patient')->where('id', '=', $this->report_id)->first();
+        //get current date
         $current_time = Carbon::now()->format('d-m-Y');
         if (is_null($report)) {
             return 'false';
@@ -69,30 +71,30 @@ class SendReportProcess implements ShouldQueue
         $report->update(['pdf_url' => $file_url]);
 
         
-        // // sending sms with textit.biz
-        // $user = "94719309953";
-        // $password = "8458";
-        // $text = urlencode('Check your report ' . $file_url);
-        // $to = $report->patient->mobile_number;
-        // // $to = "94719309953";
+        // sending sms with textit.biz
+        $user = "94719309953";
+        $password = "8458";
+        $text = urlencode('Check your report ' . $file_url);
+        $to = $report->patient->mobile_number;
+        // $to = "94719309953";
         
         
-        // $baseurl ="http://www.textit.biz/sendmsg";
-        // $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
-        // $ret = file($url);
+        $baseurl ="http://www.textit.biz/sendmsg";
+        $url = "$baseurl/?id=$user&pw=$password&to=$to&text=$text";
+        $ret = file($url);
         
-        // $res= explode(":",$ret[0]);
+        $res= explode(":",$ret[0]);
         
-        // if (trim($res[0])=="OK")
-        // {
-        //     echo "Message Sent - ID : ".$res[1];
-        // }
-        // else
-        // {
-        //     echo "Sent Failed - Error : ".$res[1];
-        // }
+        if (trim($res[0])=="OK")
+        {
+            echo "Message Sent - ID : ".$res[1];
+        }
+        else
+        {
+            echo "Sent Failed - Error : ".$res[1];
+        }
 
-        //sending email
+        //sending email to mailtrap
         Mail::to($report->patient->email)->send(new ReportMail($file_url));
 
         }catch (\Throwable $th) {
