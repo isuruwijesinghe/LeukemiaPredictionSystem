@@ -5,7 +5,7 @@
     <div class="row">
             <!-- <div class="panel-body"> -->
                 <div class="panel-heading">
-                    <h2><b class="text-primary">Leukemia Diagnosis Report</b></h2>
+                    <h2><b class="text-primary">Leukemia Prediction Report</b></h2>
                 </div>
                 <!-- <div class="panel-body"> -->
                     <div class="container-fluid">
@@ -152,7 +152,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="bg-primary text-white">
-                                                                <h4><b>Diagnosis</b></h4>
+                                                                <h4><b>Prediction</b></h4>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -175,7 +175,7 @@
                                                             <input type="hidden" name="report_id" value="{{$report_id}}">
 
                                                             <td class="bg-primary text-white">
-                                                                <h4><b>Next blood count date</b></h4>
+                                                                <h4><b>Next appointement date</b></h4>
                                                             </td>
                                                         </tr>
             

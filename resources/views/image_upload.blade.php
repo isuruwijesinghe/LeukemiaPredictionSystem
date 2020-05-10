@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <div class="row">
-            <div class="panel-body">
+    <div class="row justify-content-center">
+    <div class="col-sm-3">
+            <div class="panel-body center-block text-center">
                 <div class="panel-heading">
                 <h2><b class="text-primary">Upload CBC Report</b></h2>
                 </div>
@@ -31,6 +32,7 @@
                     </div>
                 </div>
             </div>
+    </div>
     </div>
 </div>
 @endsection 

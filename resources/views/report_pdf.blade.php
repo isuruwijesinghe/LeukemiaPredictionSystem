@@ -19,7 +19,7 @@
     <div class="row">
             <div class="panel-body">
                 <div class="panel-heading">
-                    <h2><b class="text-primary">Leukemia Diagnosis Report</b></h2>
+                    <h2><b class="text-primary">Leukemia Prediction Report</b></h2>
                 </div>
                 <div class="panel-body">
                     <div class="container-fluid">
@@ -175,7 +175,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="bg-danger text-white">
-                                                                <h4><b>Diagnosis</b></h4>
+                                                                <h4><b>Prediction</b></h4>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -186,7 +186,7 @@
                                                         <tr>
 
                                                             <td class="bg-success text-white">
-                                                                <h4><b>Next blood count date</b></h4>
+                                                                <h4><b>Next bappointement date</b></h4>
                                                             </td>
                                                         </tr>
                                                         <tr>
